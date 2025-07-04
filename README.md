@@ -1,6 +1,6 @@
 # Tradutor Morse
 ## Introdução 
-Projeto realizada para a disciplina de Eletrônica para Computação no ICMC, USP São Carlos. O projeto consiste em um tradutor de Código Morse utilizando o Arduino Nano, equipado com push-buttons e display LCD. A ideia é mostrar no display o que é escrito pelo usuário, em Código Morse, com os botões, sendo um botão o ponto, outro barra e outro enter. O projeto, além de contribuir para o desenvolvimento dos integrantes do grupo, pode ser usado como base para um sistema de comunicação a distância por Código Morse, se utilizado algum equipamento emissor e receptor de sinais.
+Projeto realizado para a disciplina de Eletrônica para Computação no ICMC, USP São Carlos. O projeto consiste em um tradutor de Código Morse utilizando o Arduino Nano, equipado com push-buttons e display LCD. A ideia é mostrar no display o que é escrito pelo usuário, em Código Morse, com os botões, sendo um botão o ponto, outro barra e outro enter. O projeto, além de contribuir para o desenvolvimento dos integrantes do grupo, pode ser usado como base para um sistema de comunicação a distância por Código Morse, se utilizado algum equipamento emissor e receptor de sinais.
 
 ## Explicação dos Componentes e do Projeto 
 
@@ -48,7 +48,7 @@ Porém, o Arduino tem um circuito interno de pull-up para cada pino e para utili
 No projeto, foi utilizado o pull-up interno para tratar esse erro e foi utilzado três desses componentes para as funções: o da esquerda para "." e  o do meio para "_" (caracteres do Código Morse), além do mais a direita para o enter. O enter tem a função que quando a código está correto, junta o caractere escrito em código a mensagem maior no display. Além disso, quando o enter é pressionado por mais tempo, ele tem a função de dar um espaço na mensagem maior do display. Se pressionado por mais tempo ainda, limpará o display.
 
 ### LED RGB
-LED RGB é um componente composto por três diodo capaz de emitir luz, ou seja, três LED. Cada um dos LED's que os compõe possuem cores diferentes: um vermelho, um verde e um azul. Pelas entradas PWM, conseguimos controlar a intensidades dos LED's. Através da mistura das cores, podemos obter quase qualquer cor visível. Por causa disso, o LED RGB possui quatro pernas: uma corresponde ao LED azul, outra ao LED vermelho, outra ao LED verde e outra para o cátodo comum (terra comum) ou o ânodo comum (alimentação comum). O LED RGB que foi colocado no circuito real é o que possui o ânodo comum como quarta perna.
+LED RGB é um componente composto por três diodo capaz de emitir luz, ou seja, três LED's. Cada um dos LED's que os compõe possuem cores diferentes: um vermelho, um verde e um azul. Pelas entradas PWM, conseguimos controlar a intensidades dos LED's. Através da mistura das cores, podemos obter quase qualquer cor visível. Por causa disso, o LED RGB possui quatro pernas: uma corresponde ao LED azul, outra ao LED vermelho, outra ao LED verde e outra para o cátodo comum (terra comum) ou o ânodo comum (alimentação comum). O LED RGB que foi colocado no circuito real é o que possui o ânodo comum como quarta perna.
 
 ![image](https://github.com/user-attachments/assets/617cdddf-a7bc-4b91-b898-5d9593f28cb3)
 
