@@ -83,6 +83,9 @@ Link: https://www.tinkercad.com/things/90cZz3m95gR-tradutor-de-codigo-morse
 
 ![image](https://github.com/user-attachments/assets/8fbb5770-b85d-48cb-8787-edba4a285c43)
 
+## Vídeo Explicativo
+
+Link: 
 
 ## Grupo
 
