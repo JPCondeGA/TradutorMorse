@@ -75,7 +75,7 @@ Componentes capazes de segurar uma parte da tensão no circuito. No nosso projet
 
 ![image](https://github.com/user-attachments/assets/ef566b66-fe91-4bcc-ada6-772350ca9a9c)
 
-Link: https://www.tinkercad.com/things/90cZz3m95gR-tradutor-de-codigo-morse?sharecode=CViDSfkRNpLXkHRXYo7c-WaEDS6KajbH5TMtToBj50I
+Link: https://www.tinkercad.com/things/90cZz3m95gR-tradutor-de-codigo-morse
 
 ## Fotos do Projeto
 
