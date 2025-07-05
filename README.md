@@ -85,7 +85,7 @@ Link: https://www.tinkercad.com/things/90cZz3m95gR-tradutor-de-codigo-morse
 
 ## Vídeo Explicativo
 
-Link: 
+Link: https://youtu.be/6W0cckQ3Tm8
 
 ## Grupo
 
