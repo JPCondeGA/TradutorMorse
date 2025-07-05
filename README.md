@@ -7,16 +7,16 @@ Projeto realizado para a disciplina de Eletrônica para Computação no ICMC, US
 ### Arduino Nano 
 Como as outras versões é um microcontrolador, equipado por um microprocessador, memória e pinos binário e PWM , isto é, pinos que entregam 5 ou 0 V e pinos que entregam entre 0 e 255 a depender da duração do ciclo da onda. Como o próprio nome diz, o Nano tem um tamanho menor, porém a mesma quantidade de pinos que o UNO (que foi utilizado no simulador TinkerCAD). Normalmente, ele é usado sendo encaixado na placa, por causa do seu tamanho, mas preferimos deixar ele fora, utilizando jumpers para conectar os componentes.
 
-Além disso, é importante reassaltar que o arduino disponibiliza uma tensão de 5V e um ground, quando alimentado, geralmente pelo seu cabo USB. Essa tensão foi utilizada para ligar o display e outros componentes.
+Além disso, é importante reassaltar que o Arduino disponibiliza uma tensão de 5V e um ground, quando alimentado, geralmente pelo seu cabo USB. Essa tensão foi utilizada para ligar o display e outros componentes.
 
 ### Display LCD
-Componente que é um tipo de tela capaz de mostrar caracteres literais e gráficos, por meio de uma tecnologia baseada em controle de criastal líquido por meio de campos magnéticos. Quando um campo elétrico é aplicado em um fio, o cristal se alinha, bloqueando a luz. Por meio dessa interrupção ou não de luz que o LCD forma os caracteres. Para controlar essa tecnologia, ele possui dentro de si um circuito controlador, quase como um microcontrolador. Ele possui diversos pinos, dentren os quais estão:
+Componente que é um tipo de tela capaz de mostrar caracteres literais e gráficos, por meio de uma tecnologia baseada em controle de criastal líquido por meio de campos magnéticos. Quando um campo elétrico é aplicado em um fio, o cristal se alinha, bloqueando a luz. Por meio dessa interrupção ou não de luz que o LCD forma os caracteres. Para controlar essa tecnologia, ele possui dentro de si um circuito controlador, quase como um microcontrolador. Ele possui diversos pinos, dentre os quais estão:
 
 * VDD: onde se liga a fonte de tensão (o 5V do Arduino);
 * VSS: onde se liga o terra;
 * V0: controla o contraste do fundo com os caracteres impressos;
 * RS: indica se o que ele está recebendo é um comando ou um dado;
-* RW: controle se a operação a ser feita é leitura ou escrita (normalmente conectado ao terra, permitindo somente leitura);
+* RW: controle se a operação a ser feita é leitura ou escrita (normalmente conectado ao terra, permitindo somente escritaa);
 * D0-D7: entrada para dados (conectado aos pinos do Arduino, o qual enviará os dados);
 * E: quando tem valor lógico 1, faz com que os dados sejam lidos;
 * A: VCC do LED (luz de fundo do display);
@@ -24,7 +24,8 @@ Componente que é um tipo de tela capaz de mostrar caracteres literais e gráfic
 
 OBS: no nosso circuito, utilizou-se somente do D4 a D7
 
-Por ser um componente muito complexo, o Arduino possui diversas bibliotecas para trabalhar com ele. A mais comum, a qual utilizamos, foi a LiquidCrystal.h, que, ao conectar os pinos corretos no display, abstrai bastannte o uso dele por meio da classe lcd. Através de um objeto dessa classe, podemos executar o método print, por exemplo, que mostra algo no display, sem nos preocupar com a complexidade dessa operação.
+Por ser um componente muito complexo, o Arduino possui diversas bibliotecas para trabalhar com ele. A mais comum, a qual utilizamos, foi a LiquidCrystal.h, que, ao conectar os pinos corretos no display, abstrai bastannte o uso dele por meio da classe LiquidCrystal. Através de um objeto dessa classe, podemos executar o método print, por exemplo, que mostra algo no display, sem nos preocupar com a complexidade dessa operação.
+
 Por fim, no nosso circuito, foi utilizado um de 2 linhas com 16 caracteres cada (16x2) e ele tem o papel de mostrar a mensagem escrita pelo usuário na primeira linha e o carctere que está sendo escrito, junto de seu Código Morse, na segunda linha.
 
 ### Potenciômetro
@@ -35,17 +36,17 @@ Push-button é um tipo de botão que quando pressionado fecha uma chave que cone
 
 ![image](https://github.com/user-attachments/assets/90e00807-b3ca-41b0-a1f4-3fd3aed35171)
 
-Um problema comum com esse tipo de botão é o da flutuação. Imagine o seguinte caso: um botão está conectado a um pino de entrada do arduino e ao terra (nos fios separados); ao apertamos conectamos o terra ao pino e ele recebe o valor lógico 0, porém quando pararmos de pressionar, o pino será desconectado do terra e não conectado a nenhuma outra fonte, ou seja, o pino não tem uma tensão exata: não é 0 V que viria do terra e nem 5 V que viria da fonte. Desse modo, é necessário fazer um circuito chamado de pull-up, o qual tem a função de fazer o botão ter nível lógico 1 sempre que não estiver pressionado. Esse circuito é simples e é construído colocando um resistor que conecta uma fonte de tensão e a entrada (como abaixo). 
+Um problema comum com esse tipo de botão é o da flutuação. Imagine o seguinte caso: um botão está conectado a um pino de entrada do Arduino e ao terra (nos fios separados); ao apertamos conectamos o terra ao pino e ele recebe o valor lógico 0, porém quando pararmos de pressionar, o pino será desconectado do terra e não conectado a nenhuma outra fonte, ou seja, o pino não tem uma tensão exata: não é 0 V que viria do terra e nem 5 V que viria da fonte. Desse modo, é necessário fazer um circuito chamado de pull-up, o qual tem a função de fazer o botão ter nível lógico 1 sempre que não estiver pressionado. Esse circuito é simples e é construído colocando um resistor que conecta uma fonte de tensão e a entrada (como abaixo). 
 
 ![image](https://github.com/user-attachments/assets/e0df0783-d650-4b69-b470-2790b84f0d59)
 
 Fonte: _https://blog.eletrogate.com/entendendo-os-resistores-de-pull-up-e-pull-down/_
 
-Porém, o Arduino tem um circuito interno de pull-up para cada pino e para utilizá-lo, declaramos o pino do botão como entrada com pull-up (button é uma variável inteira que guarda o valor do pino em que estpa conectado o botão):
+Porém, o Arduino tem um circuito interno de pull-up para cada pino e para utilizá-lo, declaramos o pino do botão como entrada com pull-up (button é uma variável inteira que guarda o valor do pino em que está conectado o botão):
 
     PIN_MODE(button, INPUT_PULLUP)
 
-No projeto, foi utilizado o pull-up interno para tratar esse erro e foi utilzado três desses componentes para as funções: o da esquerda para "." e  o do meio para "_" (caracteres do Código Morse), além do mais a direita para o enter. O enter tem a função que quando a código está correto, junta o caractere escrito em código a mensagem maior no display. Além disso, quando o enter é pressionado por mais tempo, ele tem a função de dar um espaço na mensagem maior do display. Se pressionado por mais tempo ainda, limpará o display.
+No projeto, foi utilizado o pull-up interno para tratar esse erro e foi utilzado três desses componentes: o da esquerda para "." e o do meio para "_" (caracteres do Código Morse), além do da direita para o enter. O enter tem a função que quando a código está correto, junta o caractere escrito em código a mensagem maior na primeira linha do display. Além disso, quando o enter é pressionado por mais tempo, ele tem a função de dar um espaço na mensagem. Se pressionado por mais tempo ainda, limpará o display.
 
 ### LED RGB
 LED RGB é um componente composto por três diodo capaz de emitir luz, ou seja, três LED's. Cada um dos LED's que os compõe possuem cores diferentes: um vermelho, um verde e um azul. Pelas entradas PWM, conseguimos controlar a intensidades dos LED's. Através da mistura das cores, podemos obter quase qualquer cor visível. Por causa disso, o LED RGB possui quatro pernas: uma corresponde ao LED azul, outra ao LED vermelho, outra ao LED verde e outra para o cátodo comum (terra comum) ou o ânodo comum (alimentação comum). O LED RGB que foi colocado no circuito real é o que possui o ânodo comum como quarta perna.
@@ -57,7 +58,7 @@ Fonte: _https://www.squids.com.br/arduino/software/dicas-de-software/372-led-rgb
 O componente no sistema, inicialmente desligado, foi utilizado como indicador do tempo de pressão no botão enter: se o botão de enter foi pressionado o bastante para dar espaço, ele acende na cor verde; se já foi o bastante para limpar o display, desliga novamente.
 
 ### Resistores
-Componentes capazes de segurar uma parte da tensão no circuito. No nosso projeto, foi utilizado dois resistores para diminuirem a corrente que passa pelo LED RGB e pelo LED do display LCD. O valor deles foi o necessário para que os LED's não tivessem perigo de queimar, o que acontece quando passa cerca de 20 mA por ele. Desse modo, cada um tem 820 Ohms e sendo 5 V a tensão do circuito por causa do Arduino, temos:
+Componentes capazes de segurar uma parte da tensão no circuito. No nosso projeto, foi utilizado dois resistores para diminuirem a corrente que passa pelo LED RGB e pelo LED do display LCD. O valor deles foi o necessário para que os LED's não tivessem perigo de queimar, o que acontece quando passa cerca de 20 mA por eles. Desse modo, cada um tem 820 Ohms e sendo 5 V a tensão do circuito por causa do Arduino, temos:
 
      I = 5/820 ~ 0,006 = 6 mA
 
